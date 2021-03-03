@@ -1,20 +1,6 @@
-export default function mainView(){
+export default function mainView() {
     let content = document.createElement('div');
-    content.id = "main-content";
+    content.id = "main";
 
-    let control = document.createElement('div');
-    content.append(control);
-    let statisticsButton = document.createElement('button');
-    statisticsButton.id = 'statistics';
-    statisticsButton.innerText = 'Statistics';
-
-    let gameButton = document.createElement('button');
-    
-    gameButton.id = 'game';
-    gameButton.innerText = 'gameButton';
-
-
-    control.append(statisticsButton);
-    control.append(gameButton);
     return content;
 }

@@ -11,7 +11,7 @@
     "url": "ssh://git@gitlab.akaver.com:9022/taltech-public/javascript-2020-spring/webpack-skeleton.git"
   },
   "keywords": [],
-  "author": "Andres Käver",
+  "author": "Mikhail Drobyshev",
   "license": "ISC",
   "devDependencies": {
     "html-webpack-plugin": "^5.0.0",
