@@ -6,9 +6,10 @@ import GameBrain from './model/gamebrain.js';
 import GameController from './controllers/gamecontroller.js';
 import StatisticsController from './controllers/statisticscontroller.js';
 
+
 let brain = new GameBrain();
 let game_view = gameView();
-let gameController = new GameController(brain, game_view);
+let gameController = new GameController(brain, game_view, name);
 let statisticsController = new StatisticsController(brain, game_view);
 
 let view = mainView();
@@ -20,13 +21,14 @@ view.append(game_view);
 function gameControlClick(e) {
      switch (e.target.id) {
         case 'game':
+            statisticsController.run();
             statisticsController.stop();
-            statisticsController.score = gameController.run();
+            gameController.run();
             break;
         case 'statistics':
             //statisticsController.score = gameController.run();
-            gameController.stop();
             statisticsController.run();
+            gameController.stop();
             break;
         default:
             break;
