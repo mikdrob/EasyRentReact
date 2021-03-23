@@ -4,7 +4,7 @@ import gameView from './views/gameview';
 
 import { GameBrain } from './model/game-brain';
 import { GameController } from './controllers/gamecontroller';
-import StatisticsController from './controllers/statisticscontroller';
+import {StatisticsController} from './controllers/statisticscontroller';
 
 
 let brain = new GameBrain();
@@ -12,37 +12,37 @@ let game_view = gameView();
 let gameController = new GameController(brain, game_view);
 let statisticsController = new StatisticsController(brain, game_view);
 
-// let view = mainView();
-// document.body.append(view);
-// let ctrl_view = controlView(gameControlClick);
-// view.append(ctrl_view);
-// view.append(game_view);
+let view = mainView();
+document.body.append(view);
+let ctrl_view = controlView(gameControlClick);
+view.append(ctrl_view);
+view.append(game_view);
 
-// function gameControlClick(e) {
-//      switch (e.target.id) {
-//         case 'game':
-//             statisticsController.run();
-//             statisticsController.stop();
-//             gameController.run();
-//             break;
-//         case 'statistics':
-//             //statisticsController.score = gameController.run();
-//             statisticsController.run();
-//             gameController.stop();
-//             break;
-//         default:
-//             break;
-//     }
+function gameControlClick(e:any) {
+     switch ((e.target as Element).id) {
+        case 'game':
+            statisticsController.run();
+            statisticsController.stop();
+            gameController.run();
+            break;
+        case 'statistics':
+            //statisticsController.score = gameController.run();
+            statisticsController.run();
+            gameController.stop();
+            break;
+        default:
+            break;
+    }
     
-// }
+}
 
-// statisticsController.run();
+statisticsController.run();
 
 
-// window.addEventListener('resize', () => {
-//     gameController.resizeUi();
-//     statisticsController.resizeUi();
-// });
+window.addEventListener('resize', () => {
+    gameController.resizeUi();
+    statisticsController.resizeUi();
+});
 
 
 /*

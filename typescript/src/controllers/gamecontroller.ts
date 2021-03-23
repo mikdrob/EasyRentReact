@@ -1,11 +1,26 @@
 import { GameBoard } from "../model/gameboard";
-import {GameBrain} from "../model/game-brain"
+
+interface GameBrain{
+    rowCount: number;
+    colCount: number;
+    scoreBoard: Array<number>;
+    board: Array<Array<number>>;
+    intializeBoard(): void;
+    getGameBoard(): Array<Array<number>>;
+
+    gameCellEmpty() : number;
+    gameCellObstacle() : number;
+    gameNumberOfCellsOnScreen(): number;
+    gameCellBird() : number;
+    gameBirdPositionVertical() : number;
+    gameBirdPositionHorizontal() : number;
+}
 
 export class GameController {
     public viewContainer: Element;
-    public model: Object;
+    public model: GameBrain;
     public isRunning: Boolean;
-    public score: Number;
+    public score: number;
     constructor(model: GameBrain, viewContainer: Element) {
         this.viewContainer = viewContainer;
         this.model = model;
@@ -46,7 +61,7 @@ export class GameController {
         }
     }
 
-    getBoardHtml(gameBrain: Object) {
+    getBoardHtml(gameBrain: GameBrain) {
         let content = document.createElement('div');
         content.id = "gameboard";
         let rowHeight = window.innerHeight / (this.model.rowCount + 1);
@@ -89,7 +104,7 @@ export class GameController {
         let node = document.createTextNode('0');
         score.append(node);
         data.append(score);
-        result.append(data);
+        result!.append(data);
     }
 
     getRandomColor() {
@@ -98,13 +113,14 @@ export class GameController {
         for (var i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
         }
-        if (color == '#000000')
-            color == '#000001'
+        if (color == '#000000'){
+            color = '#000001'
+        }
         return color;
     }
 
     animate(rowIndex = 0) {
-        let content = document.getElementById("gameboard");
+        let content = document.getElementById("gameboard") as HTMLElement;
         let horizontalPosition = this.model.gameBirdPositionHorizontal();
         let hit = false;
         //this.score = 1;
@@ -115,16 +131,16 @@ export class GameController {
                 x.removeChild(x.childNodes[0]);
             }
             let bird = content.childNodes[GameBoard.currentPosition()];
-            let birdChild = bird.childNodes[horizontalPosition];
-            let birdChildPrev = bird.childNodes[horizontalPosition - 1];
+            let birdChild = bird.childNodes[horizontalPosition] as HTMLElement;
+            let birdChildPrev = bird.childNodes[horizontalPosition - 1] as HTMLElement;
             if (birdChild.style.backgroundColor != GameBoard.emptySpaceColor()) {
                 hit = true;
             }
             else {
                 birdChild.style.backgroundColor = GameBoard.birdColorCode();
                 birdChildPrev.style.backgroundColor = GameBoard.emptySpaceColorCode();
-                let score = document.getElementById('score');
-                score.innerHTML = rowIndex-1;
+                let score = document.getElementById('score') as HTMLElement;
+                score.innerHTML = (rowIndex-1).toString();
                 rowIndex++;
                 
             }
@@ -137,20 +153,20 @@ export class GameController {
         }, 50);
     }
 
-    userData(score) {
+    userData(score: number) {
         let user = prompt("Game Over! Your score is - " + score + "\nPlease enter your name");
         let result = document.getElementById('data');
         let username = document.createElement('label');
         username.id = 'username';
-        let name = document.createTextNode(user);
+        let name = document.createTextNode(user!);
         username.style.visibility = "hidden";
         username.append(name);
-        result.append(username);
+        result!.append(username);
     }
 
 
 
-    handleKey(e) {
+    handleKey(e:KeyboardEvent) {
         if (e.type !== 'keydown') return;
         switch (e.key) {
             case 'ArrowUp':
@@ -160,15 +176,15 @@ export class GameController {
                 UpOrDown(1);
                 break;
         }
-        function UpOrDown(value) {
+        function UpOrDown(value: number) {
 
-            let content = document.getElementById("gameboard");
+            let content = document.getElementById("gameboard") as HTMLElement;
             let currentPositionLocal = GameBoard.currentPosition(true);
 
             let bird = content.childNodes[currentPositionLocal + value];
-            let birdChild = bird.childNodes[2];
-            let birdPrev = content.childNodes[currentPositionLocal];
-            let birdPrevChild = birdPrev.childNodes[2];
+            let birdChild = bird.childNodes[2] as HTMLElement;
+            let birdPrev = content.childNodes[currentPositionLocal] ;
+            let birdPrevChild = birdPrev.childNodes[2] as HTMLElement;
             if (birdChild.style.backgroundColor == GameBoard.emptySpaceColor()) {
                 birdChild.style.backgroundColor = GameBoard.birdColorCode();
                 birdPrevChild.style.backgroundColor = GameBoard.emptySpaceColorCode();

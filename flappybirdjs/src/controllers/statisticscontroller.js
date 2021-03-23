@@ -57,7 +57,8 @@ export default class StatisticsController {
             tbdy.appendChild(tr);
         }
         tbl.appendChild(tbdy);
-        main.appendChild(tbl)
+        let main = document.getElementById('main');
+        main.appendChild(tbl);
     
 
     }

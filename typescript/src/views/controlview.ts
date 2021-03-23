@@ -1,4 +1,4 @@
-export default function controlView(eventHandler: EventListenerObject) {
+export default function controlView(eventHandler: any) {
     let control = document.createElement('div');
     control.id = 'control';
 
