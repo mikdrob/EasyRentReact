@@ -1,13 +1,11 @@
-import { gameNumberOfCellsOnScreen } from "../model/gamebrain";
 import GameBoard from "../model/gameboard";
 
 export default class GameController {
-    constructor(model, viewContainer, name) {
+    constructor(model, viewContainer) {
         this.viewContainer = viewContainer;
         this.model = model;
         this.isRunning = false;
         this.score = 0;
-        this.name = name;
     }
 
 
