@@ -1,0 +1,26 @@
+<h1>Index</h1>
+
+<p>
+    <a href="/PropertyTypes/Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                PropertyTypeValue
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr repeat.for="item of data">
+            <td>
+                ${item.propertyTypeValue}
+            </td>
+            <td>
+                ${item.id}
+            </td>
+        </tr>
+  
+    </tbody>
+</table>

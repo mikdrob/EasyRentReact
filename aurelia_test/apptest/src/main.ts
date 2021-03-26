@@ -1,4 +1,4 @@
-import Aurelia from 'aurelia';
+import Aurelia, {RouterConfiguration} from 'aurelia';
 import { MyApp } from './my-app';
 
 import 'jquery';
@@ -11,5 +11,6 @@ import '../static/site.css';
 
 
 Aurelia
+  .register(RouterConfiguration)
   .app(MyApp)
   .start();
