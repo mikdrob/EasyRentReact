@@ -25,6 +25,7 @@
     "@types/popper.js": "^1.11.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "aurelia-cli": "^2.0.2",
     "autoprefixer": "^10.2.1",
     "css-loader": "^5.0.1",
     "eslint": "^7.18.0",
