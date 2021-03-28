@@ -1,12 +1,14 @@
-<h1>Money</h1>
 
-<table class="table">
-    <tbody>
-        <tr repeat.for="item of data">
-            <td>
+
+
+    <h1>${title}</h1>
+
+        <ul class="list-group" repeat.for="item of data">
+            <li class="list-group-item" style="margin: 10px; padding: 20px;">
                 ${item.value}
-            </td>
-        </tr>
-  
-    </tbody>
-</table>
+            </li>
+        </ul>
+
+
+
+

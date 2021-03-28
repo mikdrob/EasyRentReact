@@ -1,8 +1,9 @@
-import { IDisposable } from "aurelia";
+import { bindable, IDisposable } from "aurelia";
 import { IRandomCategory } from "../domain/IRandomCategory";
 import { RandomCategoryService } from "../service/randomcategory-service";
 const category = "political";
 export class PoliticalCategoryView{
+    @bindable public title: string = "Political";
     private data: IRandomCategory[] = [];
     public subscriptions: IDisposable[] = [];
 

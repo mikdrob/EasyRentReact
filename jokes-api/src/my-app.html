@@ -8,7 +8,18 @@
     <main role="main" class="pb-3">
         <au-viewport></au-viewport>
     </main>
+    <div style="margin-top:10%;">
+    <li class="list-group-item" style="background-color: lightgrey;">
+        You have already seen these posts
+    </li>
+    </div>
+    <ul class="list-group" repeat.for="item of data" style="background-color: lightgray;">
+        <li class="list-group-item" style="margin: 10px; padding: 20px;">
+            ${item.value}
+        </li>
+    </ul>
 </div>
+
 <footer class="border-top footer text-muted">
     <div class="container">
         &copy; 2021 - Au2
