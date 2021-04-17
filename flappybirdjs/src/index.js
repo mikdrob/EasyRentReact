@@ -18,6 +18,10 @@ let ctrl_view = controlView(gameControlClick);
 view.append(ctrl_view);
 view.append(game_view);
 
+var x = 1;
+
+var x = 2;
+
 function gameControlClick(e) {
      switch (e.target.id) {
         case 'game':
