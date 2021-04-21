@@ -1,6 +1,7 @@
 <import from="./views/home/home-index.html"/>
-<import from="./views/identity/identity-login.html"/>
+<import from="./views/identity/identity-login"/>
 <import from="./views/property-types/property-types-router.html"/>
+<import from="./views/property-types/property-types-details" />
 
 
 <header>
@@ -22,11 +23,14 @@
                                 
 
     <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="/Identity/Account/Register">Register</a>
+            <li show.bind="state.token == null" class="nav-item">
+                <a class="nav-link text-dark" href="#">Register</a>
             </li>
-            <li class="nav-item">
+            <li show.bind="state.token == null" class="nav-item">
                 <a class="nav-link text-dark" load="identity-login">Login</a>
+            </li>
+            <li show.bind="state.token != null" class="nav-item">
+                <a class="nav-link text-dark" click.delegate="logOut($event)">Logout</a>
             </li>
     </ul>
                 </div>
