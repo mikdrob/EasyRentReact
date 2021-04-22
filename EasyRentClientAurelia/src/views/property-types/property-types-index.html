@@ -1,9 +1,10 @@
 
 <p>
-    <!---<a href="/PropertyTypes/Create">Create New</a> -->  
+    <a load="/property-types-create">Create new</a>
 </p>
 <table class="table">
     <thead>
+        
         <tr>
             <th>
                 Type of House 
@@ -22,7 +23,9 @@
                 ${item.propertyCount}
             </td>
             <td>
-                <a load="/property-types-details(${item.id})">Details</a>
+                <a load="/property-types-details(${item.id})">Details | </a>
+                <a load="/property-types-edit(${item.id})">Edit | </a>
+                <a load="/property-types-delete(${item.id})">Delete</a>
             </td>
         </tr>
   

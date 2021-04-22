@@ -1,7 +1,14 @@
 <import from="./views/home/home-index.html"/>
 <import from="./views/identity/identity-login"/>
+<import from="./views/identity/identity-register"/>
 <import from="./views/property-types/property-types-router.html"/>
 <import from="./views/property-types/property-types-details" />
+<import from="./views/property-types/property-types-edit" />
+<import from="./views/property-types/property-types-index" />
+<import from="./views/property-types/property-types-create" />
+<import from="./views/property-types/property-types-delete" />
+
+
 
 
 <header>
@@ -24,7 +31,7 @@
 
     <ul class="navbar-nav">
             <li show.bind="state.token == null" class="nav-item">
-                <a class="nav-link text-dark" href="#">Register</a>
+                <a class="nav-link text-dark" load="identity-register">Register</a>
             </li>
             <li show.bind="state.token == null" class="nav-item">
                 <a class="nav-link text-dark" load="identity-login">Login</a>

@@ -1,5 +1,5 @@
 export interface IPropertyType{
-    //id: string;
+    id: string;
     propertyTypeValue: string;
     propertyCount: number;
 }

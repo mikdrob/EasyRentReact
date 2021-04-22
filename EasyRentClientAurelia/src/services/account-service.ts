@@ -37,4 +37,35 @@ export class AccountService{
 
 
 
-    }}
+    }
+
+    async register(email: string, password: string, firstname: string, lastname: string): 
+        Promise<IFetchResponse<Response>>{
+
+        let url = this.endPointUrl;
+        
+
+        try{
+            let body = {email, password, firstname, lastname};
+            const responce = await this.httpClient.post(url, JSON.stringify(body),{cache: "no-store"});
+            console.log(responce);
+            if(responce.ok){
+                return {
+                    statusCode: responce.status,
+                };
+            }
+            return {
+                statusCode: responce.status,
+                errorMessage: responce.statusText
+            };
+        } catch (reason){
+            return {
+                statusCode: 0,
+                errorMessage: JSON.stringify(reason)
+            };
+        }
+
+
+
+    }
+}

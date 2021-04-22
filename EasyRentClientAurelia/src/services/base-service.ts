@@ -18,23 +18,23 @@ export class BaseService<TEntity>{
 
         try{
 
-            const responce = await this.httpClient.fetch(
+            const response = await this.httpClient.fetch(
                 url,
                 {
                     cache: "no-store",
                     headers: this.authHeaders
                 });
 
-            if(responce.ok){
-                const data = (await responce.json()) as TEntity[];
+            if(response.ok){
+                const data = (await response.json()) as TEntity[];
                 return {
-                    statusCode: responce.status,
+                    statusCode: response.status,
                     data: data
                 };
             }
             return {
-                statusCode: responce.status,
-                errorMessage: responce.statusText
+                statusCode: response.status,
+                errorMessage: response.statusText
             };
         } catch (reason){
             return {
@@ -58,17 +58,17 @@ export class BaseService<TEntity>{
         }
 
         try{
-            const responce = await this.httpClient.fetch(url, {cache: "no-store", headers: this.authHeaders});
-            if(responce.ok){
-                const data = (await responce.json()) as TEntity;
+            const response = await this.httpClient.fetch(url, {cache: "no-store", headers: this.authHeaders});
+            if(response.ok){
+                const data = (await response.json()) as TEntity;
                 return {
-                    statusCode: responce.status,
+                    statusCode: response.status,
                     data: data
                 };
             }
             return {
-                statusCode: responce.status,
-                errorMessage: responce.statusText
+                statusCode: response.status,
+                errorMessage: response.statusText
             };
         } catch (reason){
             return {
@@ -80,5 +80,91 @@ export class BaseService<TEntity>{
         
 
     }
+
+    async put(id: string, queryParams?: IQueryParams): Promise<IFetchResponse<Response>>{
+        let url = this.endPointUrl;
+
+        url = url + '/' + id;
+
+    
+
+        try{
+            let body = queryParams;
+            const response = await this.httpClient.put(url, JSON.stringify(body),{cache: "no-store", headers: this.authHeaders});
+            if(response.ok){
+                return {
+                    statusCode: response.status,
+                };
+            }
+            return {
+                statusCode: response.status,
+                errorMessage: response.statusText
+            };
+        } catch (reason){
+            return {
+                statusCode: 0,
+                errorMessage: JSON.stringify(reason)
+            };
+        }
+
+        
+
+    }
+
+    async post(queryParams?: IQueryParams): Promise<IFetchResponse<Response>>{
+        let url = this.endPointUrl;
+        
+
+        try{
+            let body = queryParams;
+            const response = await this.httpClient.post(url, JSON.stringify(body),{cache: "no-store", headers: this.authHeaders});
+            if(response.ok){
+                return {
+                    statusCode: response.status,
+                };
+            }
+            return {
+                statusCode: response.status,
+                errorMessage: response.statusText
+            };
+        } catch (reason){
+            return {
+                statusCode: 0,
+                errorMessage: JSON.stringify(reason)
+            };
+        }
+
+        
+
+    }
+
+    async remove(id: string, queryParams?: IQueryParams): Promise<IFetchResponse<Response>>{
+        let url = this.endPointUrl;
+        url = url + '/' + id;
+
+        try{
+            let body = queryParams;
+            const response = await this.httpClient.delete(url, JSON.stringify(body),{cache: "no-store", headers: this.authHeaders});
+            if(response.ok){
+                return {
+                    statusCode: response.status,
+                };
+            }
+            return {
+                statusCode: response.status,
+                errorMessage: response.statusText
+            };
+        } catch (reason){
+            return {
+                statusCode: 0,
+                errorMessage: JSON.stringify(reason)
+            };
+        }
+
+        
+
+    }
+    
+  
     
 }
