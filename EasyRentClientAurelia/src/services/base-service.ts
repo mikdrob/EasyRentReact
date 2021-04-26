@@ -11,7 +11,7 @@ export class BaseService<TEntity>{
     }: {};
 
     async getAll(queryParams?: IQueryParams): Promise<IFetchResponse<TEntity[]>>{
-        let url = this.endPointUrl;
+        const url = this.endPointUrl;
         if (queryParams!==undefined){
             //todo
         }
@@ -89,7 +89,7 @@ export class BaseService<TEntity>{
     
 
         try{
-            let body = queryParams;
+            const body = queryParams;
             const response = await this.httpClient.put(url, JSON.stringify(body),{cache: "no-store", headers: this.authHeaders});
             if(response.ok){
                 return {
@@ -112,11 +112,11 @@ export class BaseService<TEntity>{
     }
 
     async post(queryParams?: IQueryParams): Promise<IFetchResponse<Response>>{
-        let url = this.endPointUrl;
+        const url = this.endPointUrl;
         
 
         try{
-            let body = queryParams;
+            const body = queryParams;
             const response = await this.httpClient.post(url, JSON.stringify(body),{cache: "no-store", headers: this.authHeaders});
             if(response.ok){
                 return {
