@@ -15,9 +15,10 @@ export class IdentityLogin{
 
     }
 
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     async loginClicked(event: Event){
         event.preventDefault();
-        let response = await this.service.login(this.email, this.password);
+        const response = await this.service.login(this.email, this.password);
         
         if(response.statusCode == 200 && response.data){
             this.state.token = (response.data as IJwtResponse).token;

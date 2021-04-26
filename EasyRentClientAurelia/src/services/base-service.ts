@@ -143,7 +143,7 @@ export class BaseService<TEntity>{
         url = url + '/' + id;
 
         try{
-            let body = queryParams;
+            const body = queryParams;
             const response = await this.httpClient.delete(url, JSON.stringify(body),{cache: "no-store", headers: this.authHeaders});
             if(response.ok){
                 return {
