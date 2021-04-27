@@ -2,7 +2,6 @@ import { HttpClient } from "aurelia";
 import { IFetchResponse } from "../types/IFetchResponse";
 import { IJwtResponse } from "../types/IJwtResponse";
 import { IMessage } from "../types/IMessage";
-import { IQueryParams } from "../types/IQueryParams";
 
 export class AccountService{
     constructor(protected endPointUrl: string, protected httpClient: HttpClient){
@@ -10,11 +9,11 @@ export class AccountService{
     }
 
     async login(email: string, password: string): Promise<IFetchResponse<IJwtResponse | IMessage>>{
-        let url = this.endPointUrl;
+        const url = this.endPointUrl;
         
 
         try{
-            let body = {email, password};
+            const body = {email, password};
             const responce = await this.httpClient.post(url, JSON.stringify(body),{cache: "no-store"});
             if(responce.ok){
                 const data = (await responce.json()) as IJwtResponse;
@@ -42,11 +41,11 @@ export class AccountService{
     async register(email: string, password: string, firstname: string, lastname: string): 
         Promise<IFetchResponse<Response>>{
 
-        let url = this.endPointUrl;
+        const url = this.endPointUrl;
         
 
         try{
-            let body = {email, password, firstname, lastname};
+            const body = {email, password, firstname, lastname};
             const responce = await this.httpClient.post(url, JSON.stringify(body),{cache: "no-store"});
             console.log(responce);
             if(responce.ok){

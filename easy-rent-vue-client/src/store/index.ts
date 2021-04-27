@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import axios from 'axios'
+import { logIn } from './actions';
 
 export interface IState {
     token: string | null;
@@ -22,6 +22,7 @@ export interface IJwtResponse {
 export interface ILoginInfo {
     email: string;
     password: string;
+    url: string;
 }
 
 export default createStore({
@@ -39,17 +40,7 @@ export default createStore({
         },
     },
     actions: {
-        async logIn(context, login: ILoginInfo): Promise<void> {
-            const loginDataStr = JSON.stringify(login);
-            const response = await axios.post(
-                'https://localhost:5001/api/v1/Account/Login',
-                loginDataStr,
-                { headers: { 'Content-type': 'application/json' } }
-            );
-            if (response.status === 200) {
-                context.commit('logIn', response.data);
-            }
-        }
+        logIn: (context, login: ILoginInfo) => { logIn(context, login) }
     },
     getters: {
     },

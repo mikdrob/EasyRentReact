@@ -1,56 +1,4 @@
-<template>
-    <header>
-        <nav
-            class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-        >
-            <div class="container">
-                <router-link class="navbar-brand" to="/">WebApp</router-link>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div
-                    class="navbar-collapse collapse d-sm-inline-flex justify-content-between"
-                >
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="navbar-brand" href="/PropertyTypes"
-                                >PropertyTypes</a
-                            >
-                        </li>
-                    </ul>
-                </div>
-                <ul v-if="token == null" class="navbar-nav">
-                    <li class="nav-item">
-                        <router-link class="navbar-brand" to="/identity/login">Login</router-link>
-                    </li>
-                </ul>
-                <ul v-if="token != null" class="navbar-nav">
-                    <li class="nav-item"> <a href="#" class="nav-link text-dark"
-                        @click="logOut()">
-                        Logout</a
-                        >
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            <router-view />
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">Vue test</div>
-    </footer>
+<template src='./App.html'>
 </template>
 
 <script lang="ts">
@@ -71,3 +19,5 @@ export default class App extends Vue {
     }
 }
 </script>
+<style scoped src="./static/site.css">
+</style>
