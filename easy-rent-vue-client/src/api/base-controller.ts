@@ -21,8 +21,6 @@ export default class BaseController<TEntity> {
         try {
             const response = (await axios.get(url)) as AxiosResponse;
             if (response.status === 200) {
-                const data = response.data as TEntity[];
-                console.log(data);
                 return {
                     statusCode: response.status,
                     data: response.data
