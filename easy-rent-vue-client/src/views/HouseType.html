@@ -1,0 +1,27 @@
+<table class="table">
+    <thead>
+        
+        <tr>
+            <th>
+                Type of House 
+            </th>
+            <th>
+                Number of available houses
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="item in objectItems">
+            <td>
+                {{item.propertyTypeValue}}
+            </td>
+            <td>
+                {{item.propertyCount}}
+            </td>
+            <td>
+                <a href="#">Details | </a>
+            </td>
+        </tr>
+  
+    </tbody>
+</table>
