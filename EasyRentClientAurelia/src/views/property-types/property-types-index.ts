@@ -18,5 +18,6 @@ export class PropertyTypesIndex{
         if(response.data){
             this.data = response.data;
         }
+        
     }
 }
