@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
-import Login from '../views/identity/Login.vue'
-import HouseTypeIndex from '../views/house-type/HouseTypeIndex.vue'
+import Login from '@/views/identity/Login.vue'
+import HouseTypeIndex from '@/views/house-type/HouseTypeIndex.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
