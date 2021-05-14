@@ -10,6 +10,7 @@
     "@types/node": "^12.20.10",
     "@types/react": "^17.0.4",
     "@types/react-dom": "^17.0.3",
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",

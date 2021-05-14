@@ -1,0 +1,1 @@
+export const ApiBaseUrl = "https://easyrentproj.azurewebsites.net/api/v1";
