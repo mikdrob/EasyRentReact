@@ -9,7 +9,7 @@ import HouseTypeDetails from './containers/house-types/HouseTypeDetails';
 import HouseTypeEdit from './containers/house-types/HouseTypeEdit';
 import HouseTypeIndex from './containers/house-types/HouseTypeIndex';
 import Login from './containers/identity/Login';
-import Page404 from './Page404';
+import Page404 from './containers/Page404';
 
 function App() {
     return (
