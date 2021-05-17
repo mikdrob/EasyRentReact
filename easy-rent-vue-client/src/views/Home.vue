@@ -1,15 +1,10 @@
-<template>
-  Index page
-</template>
+<template>Index page</template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-    components: {
-    },
+    components: {},
 })
-export default class Home extends Vue {
-
-}
+export default class Home extends Vue {}
 </script>

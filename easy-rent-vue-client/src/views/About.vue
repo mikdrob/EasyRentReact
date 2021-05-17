@@ -1,22 +1,18 @@
 <template>
     <div class="about">
-        <h1>This is an about page</h1>
+        <h1>This is an about page {{id}}</h1>
     </div>
 </template>
-<script>
-import { defineComponent } from '@vue/composition-api'
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
 
-export default defineComponent({
-    setup() {
-        
-    },
+@Options({
+    components: {},
+    props: {
+        id: String,
+    }
 })
-function modifyTableCell(rowIndex, columnIndex, newText) {
-    let table = document.getElementById('table');
-    let cell = table.rows[rowIndex].cells[columnIndex];
-    let valueBefore = cell.innerHTML;
-    cell.innerHTML = newText;
-    return valueBefore;
-  }
+export default class Home extends Vue {
+    // id!: string;
+}
 </script>
-

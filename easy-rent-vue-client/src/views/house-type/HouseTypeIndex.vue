@@ -7,7 +7,7 @@ import { IPropertyType } from "../../domain/IPropertyType";
 import { Vue } from "vue-class-component";
 
 export default class HouseTypeIndex extends Vue {
-    private api: BaseController<IPropertyType> = new BaseController<IPropertyType>("https://localhost:5001/api/v1/propertytypes");
+    private api: BaseController<IPropertyType> = new BaseController<IPropertyType>("https://easyrentproj.azurewebsites.net/api/v1/propertytypes");
     objectItems: IPropertyType[] = [];
     async mounted(): Promise<void> {
         const response = await this.api.getAll();

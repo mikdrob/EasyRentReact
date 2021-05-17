@@ -11,7 +11,7 @@ import store from "@/store/index"
 export default class Login extends Vue {
     email: string = "";
     password: string = "";
-    urlEndPoint: string = 'https://localhost:5001/api/v1/Account/Login';
+    urlEndPoint: string = 'https://easyrentproj.azurewebsites.net/api/v1/Account/Login';
 
     async loginClicked(event: Event): Promise<void> {
         event.preventDefault();
