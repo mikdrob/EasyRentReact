@@ -1,6 +1,2 @@
-# Sample front-end
+# Sample front-end for asp.net based api
 
-### Used frameworks
-Aurelia<br>
-Vue<br>
-React<br>
