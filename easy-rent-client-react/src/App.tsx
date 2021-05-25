@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -9,18 +10,24 @@ import HouseTypeEdit from './containers/house-types/HouseTypeEdit';
 import HouseTypeIndex from './containers/house-types/HouseTypeIndex';
 import Login from './containers/identity/Login';
 import Page404 from './containers/Page404';
-import PageForm from './containers/PageForm';
+// import PageForm from './containers/PageForm';
+import { AppContextProvider, initialAppState } from './context/AppContext';
 
 function App() {
+    const setAuthInfo = (jwt: string, firstName: string, lastName: string): void => {
+        setAppState({...appState, jwt, firstName, lastName});
+    }
+    const [appState, setAppState] = useState({...initialAppState, setAuthInfo});
     return (
         <>
+        <AppContextProvider value={appState}>
             <Header />
             <div className="container">
                 <main role="main" className="pb-3">
                     <Switch>
                         <Route exact path="/" component={HomeIndex} />
                         <Route path="/identity/login" component={Login} />
-                        <Route path="/form" component={PageForm} />
+                        {/* <Route path="/form" component={PageForm} /> */}
                         <Route path="/housetypes/create" component={HouseTypeCreate} />
                         <Route path="/housetypes/details/:id" component={HouseTypeDetails} />
                         <Route path="/housetypes/edit/:id" component={HouseTypeEdit} />
@@ -31,6 +38,7 @@ function App() {
                 </main>
             </div>
             <Footer />
+        </AppContextProvider>
         </>
     );
 }
