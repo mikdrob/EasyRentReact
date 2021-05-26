@@ -1,4 +1,4 @@
-import Axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import Axios, { AxiosError } from 'axios';
 import { ApiBaseUrl } from '../configuration';
 import { IFetchResponse } from '../types/IFetchResponse';
 import { ILoginResponse } from '../types/ILoginResponse';
