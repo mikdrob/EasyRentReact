@@ -14,8 +14,8 @@ import Page404 from './containers/Page404';
 import { AppContextProvider, initialAppState } from './context/AppContext';
 
 function App() {
-    const setAuthInfo = (jwt: string, firstName: string, lastName: string): void => {
-        setAppState({...appState, jwt, firstName, lastName});
+    const setAuthInfo = (token: string, firstname: string, lastName: string): void => {
+        setAppState({...appState, token, firstname, lastName});
     }
     const [appState, setAppState] = useState({...initialAppState, setAuthInfo});
     return (

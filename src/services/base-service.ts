@@ -12,19 +12,19 @@ export abstract class BaseService {
         }
     });
 
-    protected static getAxiosConfiguration(jwt?: string): AxiosRequestConfig | undefined {
-        if(!jwt) return undefined;
+    protected static getAxiosConfiguration(token?: string): AxiosRequestConfig | undefined {
+        if(!token) return undefined;
         const config: AxiosRequestConfig = {
             headers: {
-                Authorization: 'Bearer ' + jwt
+                Authorization: 'Bearer ' + token
             }
         }
         return config;
     }
 
-    static async getAll<TEntity>(apiEndpoint: string, jwt?: string): Promise<IFetchResponse<TEntity[]>> {
+    static async getAll<TEntity>(apiEndpoint: string, token?: string): Promise<IFetchResponse<TEntity[]>> {
         try{
-        let response = await this.axios.get<TEntity[]>(apiEndpoint, BaseService.getAxiosConfiguration(jwt));
+        let response = await this.axios.get<TEntity[]>(apiEndpoint, BaseService.getAxiosConfiguration(token));
         return {
             ok: response.status <=299,
             statusCode: response.status,

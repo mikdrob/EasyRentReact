@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 
 const Header = () => {
-    const context = useContext(AppContext);
+    const appState = useContext(AppContext);
     
     return (
         <header>
@@ -26,14 +26,24 @@ const Header = () => {
                         </ul>
 
                         <ul className="navbar-nav">
+                            {appState.token === null ?
+                                <li className="nav-item">
+                                    <NavLink className="nav-link text-dark" to="/identity/login">Login</NavLink>
+                                </li>
 
-                            <li className="nav-item">
-                                <a className="nav-link text-dark" href="/Identity/Account/Register">Register</a>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link text-dark" to="/identity/login">Login {context.firstName}</NavLink>
-                            </li>
+                                :
+                                <>
+                                    <li className="nav-item">
+                                        <span className="nav-link text-dark">{appState.firstname + ' ' + appState.lastName}</span>
+                                    </li>
+                                    <li className="nav-item">
+                                        <button onClick={() => appState.setAuthInfo('', '','')} className="btn btn-link nav-link text-dark" >Logout</button>
+                                    </li>
+                                </>
+                            }
+
                         </ul>
+
 
                     </div>
                 </div>

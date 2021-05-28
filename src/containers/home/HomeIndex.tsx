@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
+
 const HomeIndex = () => {
+    const appState = useContext(AppContext);
     return (
             <div>
-                HomeIndex
+                Hello, {appState.firstname}
             </div>
     );
 }

@@ -1,16 +1,16 @@
 import React from "react";
 
 export interface IAppState {
-    jwt: string | null;
-    firstName: string;
+    token: string | null;
+    firstname: string;
     lastName: string;
-    setAuthInfo: (jwt: string, firstName: string, lastName: string) => void;
+    setAuthInfo: (token: string, firstname: string, lastName: string) => void;
 }
 
 export const initialAppState : IAppState = {
-    jwt: null,
-    firstName: 'first',
-    lastName: 'last',
+    token: null,
+    firstname: '',
+    lastName: '',
     setAuthInfo: (): void => {}
 }
 
