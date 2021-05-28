@@ -18,6 +18,7 @@ const Header = () => {
                         <ul className="navbar-nav flex-grow-1">
                             <li className="nav-item">
                                 <NavLink className="nav-link text-dark" to="/HouseTypes">House Types</NavLink>
+                        
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link text-dark" to="/form">Form</NavLink>
@@ -37,7 +38,8 @@ const Header = () => {
                                         <span className="nav-link text-dark">{appState.firstname + ' ' + appState.lastName}</span>
                                     </li>
                                     <li className="nav-item">
-                                        <button onClick={() => appState.setAuthInfo('', '','')} className="btn btn-link nav-link text-dark" >Logout</button>
+                                        <button onClick={() => {appState.setAuthInfo('', '','');}} className="btn btn-link nav-link text-dark" id="logout" >Logout</button>
+                                
                                     </li>
                                 </>
                             }

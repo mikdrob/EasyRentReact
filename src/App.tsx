@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -17,6 +17,16 @@ function App() {
     const setAuthInfo = (token: string, firstname: string, lastName: string): void => {
         setAppState({...appState, token, firstname, lastName});
     }
+
+    useEffect(() => {
+        const userToken = localStorage.getItem("jwt");
+        const userFirstName = localStorage.getItem("userfirstname");
+        const userLastName = localStorage.getItem("userlastname");
+        if (userToken && userFirstName && userLastName) {
+          appState.setAuthInfo(userToken, userFirstName, userLastName);
+        }
+      }, []);
+
     const [appState, setAppState] = useState({...initialAppState, setAuthInfo});
     return (
         <>

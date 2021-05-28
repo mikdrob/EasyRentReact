@@ -1,3 +1,4 @@
+import { setupMaster } from "node:cluster";
 import React, { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import Alert, { EAlertClass } from "../../components/Alert";
@@ -22,13 +23,16 @@ const Login = () => {
         } else {
             setAlertMessage('');
             appState.setAuthInfo(response.data!.token, response.data!.firstname, response.data!.lastname);
+            localStorage.setItem('jwt', response.data!.token);
+            localStorage.setItem('userfirstname', response.data!.firstname);
+            localStorage.setItem('userlastname', response.data!.lastname);
         }
     }
 
     return (
         <>
 
-            { appState.token !== null ? <Redirect to="/" /> : null}
+            {appState.token !== null ? <Redirect to="/" /> : null}
             <h1>Log in</h1>
             <form onSubmit={(e) => logInClicked(e.nativeEvent)}>
                 <div className="row">
