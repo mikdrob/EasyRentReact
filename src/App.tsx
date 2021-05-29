@@ -11,24 +11,26 @@ import HouseTypeIndex from './containers/house-types/HouseTypeIndex';
 import Login from './containers/identity/Login';
 import Page404 from './containers/Page404';
 // import PageForm from './containers/PageForm';
-import { AppContextProvider, initialAppState } from './context/AppContext';
+import { AppContextProvider, IAppState, initialAppState } from './context/AppContext';
 
 function App() {
-    const setAuthInfo = (token: string | null, firstname: string, lastName: string): void => {
-        setAppState({...appState, token, firstname, lastName});
+    
+    const setAuthInfo = (token: string | null, firstname: string, lastname: string): void => {
+        setAppState({...appState, token, firstname, lastname});
     }
 
+    const [appState, setAppState] = useState({...initialAppState, setAuthInfo});
+
+
     useEffect(() => {
-        const userToken = localStorage.getItem("jwt");
-        const userFirstName = localStorage.getItem("userfirstname");
-        const userLastName = localStorage.getItem("userlastname");
-        if (userToken && userFirstName && userLastName) {
-          appState.setAuthInfo(userToken, userFirstName, userLastName);
+        const loggedInUser = localStorage.getItem("user");
+        if (loggedInUser){
+            const foundUser = JSON.parse(loggedInUser) as IAppState;
+            appState.setAuthInfo(foundUser.token, foundUser.firstname, foundUser.lastname);
         }
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [] );
 
-    const [appState, setAppState] = useState({...initialAppState, setAuthInfo});
     return (
         <>
         <AppContextProvider value={appState}>
@@ -38,7 +40,6 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={HomeIndex} />
                         <Route path="/identity/login" component={Login} />
-                        {/* <Route path="/form" component={PageForm} /> */}
                         <Route path="/housetypes/create" component={HouseTypeCreate} />
                         <Route path="/housetypes/details/:id" component={HouseTypeDetails} />
                         <Route path="/housetypes/edit/:id" component={HouseTypeEdit} />

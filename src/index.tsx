@@ -8,6 +8,8 @@ import 'popper.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 
 import './assets/site.css'
 

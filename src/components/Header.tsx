@@ -20,10 +20,6 @@ const Header = () => {
                                 <NavLink className="nav-link text-dark" to="/HouseTypes">House Types</NavLink>
                         
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link text-dark" to="/form">Form</NavLink>
-                            </li>
-
                         </ul>
 
                         <ul className="navbar-nav">
@@ -35,7 +31,7 @@ const Header = () => {
                                 :
                                 <>
                                     <li className="nav-item">
-                                        <span className="nav-link text-dark">{appState.firstname + ' ' + appState.lastName}</span>
+                                        <span className="nav-link text-dark">{appState.firstname + ' ' + appState.lastname}</span>
                                     </li>
                                     <li className="nav-item">
                                         <button onClick={() => {appState.setAuthInfo(null, '',''); localStorage.clear();}} className="btn btn-link nav-link text-dark" id="logout" >Logout</button>

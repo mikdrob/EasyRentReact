@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Loader from "../../components/Loader";
+import CustomLoader from "../../components/CustomLoader";
 import { IHouseType } from "../../domain/IHouseType";
 import { BaseService } from "../../services/base-service";
 import { EPageStatus } from "../../types/EPageStatus";
@@ -62,7 +62,7 @@ const HouseTypeIndex = () => {
                     }
                 </tbody>
             </table>
-            <Loader {...pageStatus} />
+            <CustomLoader {...pageStatus} />
         </>
 
     );

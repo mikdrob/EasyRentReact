@@ -3,14 +3,14 @@ import React from "react";
 export interface IAppState {
     token: string | null;
     firstname: string;
-    lastName: string;
-    setAuthInfo: (token: string | null, firstname: string, lastName: string) => void;
+    lastname: string;
+    setAuthInfo: (token: string | null, firstname: string, lastname: string) => void;
 }
 
 export const initialAppState : IAppState = {
     token: null,
-    firstname: '',
-    lastName: '',
+    firstname: 'Guest',
+    lastname: '',
     setAuthInfo: (): void => {}
 }
 
