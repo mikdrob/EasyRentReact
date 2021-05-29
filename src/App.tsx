@@ -14,7 +14,7 @@ import Page404 from './containers/Page404';
 import { AppContextProvider, initialAppState } from './context/AppContext';
 
 function App() {
-    const setAuthInfo = (token: string, firstname: string, lastName: string): void => {
+    const setAuthInfo = (token: string | null, firstname: string, lastName: string): void => {
         setAppState({...appState, token, firstname, lastName});
     }
 
@@ -25,7 +25,8 @@ function App() {
         if (userToken && userFirstName && userLastName) {
           appState.setAuthInfo(userToken, userFirstName, userLastName);
         }
-      }, []);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [] );
 
     const [appState, setAppState] = useState({...initialAppState, setAuthInfo});
     return (

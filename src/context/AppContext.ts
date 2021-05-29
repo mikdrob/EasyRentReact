@@ -4,7 +4,7 @@ export interface IAppState {
     token: string | null;
     firstname: string;
     lastName: string;
-    setAuthInfo: (token: string, firstname: string, lastName: string) => void;
+    setAuthInfo: (token: string | null, firstname: string, lastName: string) => void;
 }
 
 export const initialAppState : IAppState = {

@@ -38,7 +38,7 @@ const Header = () => {
                                         <span className="nav-link text-dark">{appState.firstname + ' ' + appState.lastName}</span>
                                     </li>
                                     <li className="nav-item">
-                                        <button onClick={() => {appState.setAuthInfo('', '','');}} className="btn btn-link nav-link text-dark" id="logout" >Logout</button>
+                                        <button onClick={() => {appState.setAuthInfo(null, '',''); localStorage.clear();}} className="btn btn-link nav-link text-dark" id="logout" >Logout</button>
                                 
                                     </li>
                                 </>
