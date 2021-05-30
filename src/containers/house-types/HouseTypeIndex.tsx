@@ -12,7 +12,7 @@ const RowDisplay = (props: { houseType: IHouseType }) => (
             {props.houseType.propertyTypeValue}
         </td>
         <td>
-            {props.houseType.propertyCount}
+            {props.houseType.propertiesCount}
         </td>
         <td>
             <Link to={'/housetypes/details/' + props.houseType.id} >Details</Link> |
@@ -31,6 +31,7 @@ const HouseTypeIndex = () => {
         let result = await BaseService.getAll<IHouseType>('/propertytypes');
         if (result.ok && result.data) {
             setPageStatus({ pageStatus: EPageStatus.Ok, statusCode: 0 });
+            console.log(result.data);
             setHouseTypes(result.data);
         }
         else {
