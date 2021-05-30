@@ -15,9 +15,9 @@ const RowDisplay = (props: { houseType: IHouseType }) => (
             {props.houseType.propertyCount}
         </td>
         <td>
-            <Link to={'/PropertyTypes/' + props.houseType.id} >Details</Link> |
-        <Link to={'/PropertyTypes/Edit/' + props.houseType.id}> Edit</Link> |
-        <Link to={'/PropertyTypes/Delete/' + props.houseType.id}> Delete</Link>
+            <Link to={'/housetypes/details/' + props.houseType.id} >Details</Link> |
+        <Link to={'/housetypes/Edit/' + props.houseType.id}> Edit</Link> |
+        <Link to={'/housetypes/Delete/' + props.houseType.id}> Delete</Link>
         </td>
     </tr>
 );
@@ -62,7 +62,9 @@ const HouseTypeIndex = () => {
                     }
                 </tbody>
             </table>
-            <CustomLoader {...pageStatus} />
+            <div className="d-flex justify-content-center">
+                <CustomLoader {...pageStatus} />
+            </div>
         </>
 
     );

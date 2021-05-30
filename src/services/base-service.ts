@@ -40,4 +40,23 @@ export abstract class BaseService {
         }
     }
     }
+    static async get<TEntity>(apiEndpoint: string, id: string, token?: string): Promise<IFetchResponse<TEntity>> {
+        apiEndpoint = apiEndpoint + '/' + id;
+        try{
+        let response = await this.axios.get<TEntity>(apiEndpoint, BaseService.getAxiosConfiguration(token));
+        return {
+            ok: response.status <=299,
+            statusCode: response.status,
+            data: response.data,
+        };
+    }
+    catch (err){
+        let error = err as AxiosError;
+        return {
+            ok: false,
+            statusCode: error.response?.status ?? 500,
+            messages: (error.response?.data as IMessages).messages
+        }
+    }
+    }
 }

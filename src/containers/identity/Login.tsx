@@ -7,8 +7,8 @@ import { IdentityService } from "../../services/identity-service";
 import { EPageStatus } from "../../types/EPageStatus";
 
 const formState = {
-    isActive:true
- }
+    isActive: true
+}
 
 const Login = () => {
 
@@ -24,7 +24,7 @@ const Login = () => {
     const logInClicked = async (e: Event) => {
         formState.isActive = false;
         e.preventDefault();
-        
+
         setPageStatus({ pageStatus: EPageStatus.Loading, statusCode: -1 });
         if (loginData.email === '' || loginData.password === '') {
             setAlertMessage('Empty email or pawwsord!');
@@ -32,7 +32,6 @@ const Login = () => {
         setAlertMessage('');
         let response = await IdentityService.Login('account/login', loginData);
         if (!response.ok) {
-            formState.isActive = true;
             setPageStatus({ pageStatus: EPageStatus.Ok, statusCode: 0 });
             setAlertMessage(response.messages![0]);
         } else {
@@ -41,39 +40,40 @@ const Login = () => {
             appState.setAuthInfo(response.data!.token, response.data!.firstname, response.data!.lastname);
             localStorage.setItem("user", JSON.stringify(response.data));
         }
+        formState.isActive = true;
     }
 
     return (
         <>
-            
+
             {appState.token !== null ? <Redirect to="/" /> : null}
-            {formState.isActive ? 
-            <form onSubmit={(e) => logInClicked(e.nativeEvent)}>
-                <h3>Log in</h3>
-                <div className="row">
-                    <div className="col-md-6">
-                        <section>
-                            <hr />
-                            <Alert show={alertMessage !== ''} message={alertMessage} alertClass={EAlertClass.Danger} />
-                            <div className="form-group">
-                                <label htmlFor="Input_Email">Email</label>
-                                <input value={loginData.email} onChange={e => setLoginData({ ...loginData, email: e.target.value })} className="form-control" type="email" id="Input_Email" name="Input.Email" placeholder="user@example.com"  autoComplete="username" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="Input_Password">Password</label>
-                                <input value={loginData.password} onChange={e => setLoginData({ ...loginData, password: e.target.value })} className="form-control" type="password" id="Input_Password" name="Input.Password" placeholder="strong password..." autoComplete="current-password" />
-                            </div>
-                            <div className="form-group">
-                                <button onClick={(e) => logInClicked(e.nativeEvent)} type="submit" className="btn btn-primary">Log in</button>
-                            </div>
-                        </section>
+            {formState.isActive ?
+                <form onSubmit={(e) => logInClicked(e.nativeEvent)}>
+                    <h3>Log in</h3>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <section>
+                                <hr />
+                                <Alert show={alertMessage !== ''} message={alertMessage} alertClass={EAlertClass.Danger} />
+                                <div className="form-group">
+                                    <label htmlFor="Input_Email">Email</label>
+                                    <input value={loginData.email} onChange={e => setLoginData({ ...loginData, email: e.target.value })} className="form-control" type="email" id="Input_Email" name="Input.Email" placeholder="user@example.com" autoComplete="username" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="Input_Password">Password</label>
+                                    <input value={loginData.password} onChange={e => setLoginData({ ...loginData, password: e.target.value })} className="form-control" type="password" id="Input_Password" name="Input.Password" placeholder="strong password..." autoComplete="current-password" />
+                                </div>
+                                <div className="form-group">
+                                    <button onClick={(e) => logInClicked(e.nativeEvent)} type="submit" className="btn btn-primary">Log in</button>
+                                </div>
+                            </section>
+                        </div>
                     </div>
-                </div>
-            </form>
-            : null}
-                <div className="d-flex justify-content-center">
-                    <CustomLoader {...pageStatus} />
-                </div>
+                </form>
+                : null}
+            <div className="d-flex justify-content-center">
+                <CustomLoader {...pageStatus} />
+            </div>
         </>
     );
 }

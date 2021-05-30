@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import { AppContext } from "../../context/AppContext";
 
 const HomeIndex = () => {
-    const appState = useContext(AppContext);
+    // const appState = useContext(AppContext);
     return (
             <div>
-                Hello, {appState.firstname}
+                Hello
             </div>
     );
 }

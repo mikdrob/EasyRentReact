@@ -9,7 +9,7 @@ export interface IAppState {
 
 export const initialAppState : IAppState = {
     token: null,
-    firstname: 'Guest',
+    firstname: '',
     lastname: '',
     setAuthInfo: (): void => {}
 }

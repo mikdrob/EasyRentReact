@@ -10,7 +10,6 @@ import HouseTypeEdit from './containers/house-types/HouseTypeEdit';
 import HouseTypeIndex from './containers/house-types/HouseTypeIndex';
 import Login from './containers/identity/Login';
 import Page404 from './containers/Page404';
-// import PageForm from './containers/PageForm';
 import { AppContextProvider, IAppState, initialAppState } from './context/AppContext';
 
 function App() {
