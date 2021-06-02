@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, Redirect, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CustomLoader from "../../components/CustomLoader";
 import { AppContext } from "../../context/AppContext";
 import { IHouseType } from "../../domain/IHouseType";
@@ -10,9 +10,9 @@ import { IRouteId } from "../../types/IRouteId";
 
 
 const HouseTypeDetails = () => {
-    let { id } = useParams() as IRouteId;
+    const { id } = useParams() as IRouteId;
     const appState = useContext(AppContext);
-
+    const [pageStatus, setPageStatus] = useState({ pageStatus: EPageStatus.Ok, statusCode: 0 });
     const [houseType, setHouseType] = useState({} as IHouseType);
 
 
@@ -24,13 +24,17 @@ const HouseTypeDetails = () => {
                 setHouseType(result.data);
             }
             else {
-                console.log("error")
+                setPageStatus({ pageStatus: EPageStatus.Error, statusCode: result.statusCode })
             }
+        }
+        else {
+            setPageStatus({ pageStatus: EPageStatus.NotAuthorised, statusCode: 500 })
         }
     }
 
     useEffect(() => {
         loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
@@ -54,6 +58,7 @@ const HouseTypeDetails = () => {
                     </dd>
                 </dl>
             </div>
+            <CustomLoader {...pageStatus} />
             <Link to={'/housetypes'}>Back to List</Link>
         </>
 

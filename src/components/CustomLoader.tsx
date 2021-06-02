@@ -6,15 +6,17 @@ const CustomLoader = (props: {pageStatus: EPageStatus, statusCode: number}) => {
         return (
             <Loader
               type="Puff"
-              color="#00BFFF"
+              color="#000000"
               height={100}
               width={100}
-              timeout={3000} //3 secs
             />
           );
     }
     if (props.pageStatus === EPageStatus.Error){
         return <div className="alert alert-danger" role="alert">Error.. {props.statusCode}</div>
+    }
+    if (props.pageStatus === EPageStatus.NotAuthorised){
+        return <div className="alert alert-danger" role="alert">Not Authorized.. {props.statusCode}</div>
     }
     return <></>
 }
