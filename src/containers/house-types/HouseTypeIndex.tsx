@@ -30,7 +30,7 @@ const HouseTypeIndex = () => {
     const loadData = async () => {
         let result = await BaseService.getAll<IHouseType>('/propertytypes');
         if (result.ok && result.data) {
-            //setPageStatus({ pageStatus: EPageStatus.Ok, statusCode: 0 });
+            setPageStatus({ pageStatus: EPageStatus.Ok, statusCode: 0 });
             setHouseTypes(result.data);
         }
         else {

@@ -8,6 +8,9 @@ import HouseTypeDelete from './containers/house-types/HouseTypeDelete';
 import HouseTypeDetails from './containers/house-types/HouseTypeDetails';
 import HouseTypeEdit from './containers/house-types/HouseTypeEdit';
 import HouseTypeIndex from './containers/house-types/HouseTypeIndex';
+import HouseDetails from './containers/houses/HouseDetails';
+import HouseIndex from './containers/houses/HouseIndex';
+import HouseCreate from './containers/houses/HouseCreate';
 import Login from './containers/identity/Login';
 import Page404 from './containers/Page404';
 import { AppContextProvider, IAppState, initialAppState } from './context/AppContext';
@@ -44,6 +47,10 @@ function App() {
                         <Route path="/housetypes/edit/:id" component={HouseTypeEdit} />
                         <Route path="/housetypes/delete/:id" component={HouseTypeDelete} />
                         <Route path="/housetypes" component={HouseTypeIndex} />
+                        <Route path="/houses/create" component={HouseCreate} />
+                        <Route path="/houses/details/:id" component={HouseDetails} />
+                        <Route path="/houses" component={HouseIndex} />
+
                         <Route component={Page404} />
                     </Switch>
                 </main>

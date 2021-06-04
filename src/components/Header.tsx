@@ -17,8 +17,10 @@ const Header = () => {
                     <div className="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul className="navbar-nav flex-grow-1">
                             <li className="nav-item">
+                                <NavLink className="nav-link text-dark" to="/Houses">Houses</NavLink>
+                            </li>
+                            <li className="nav-item">
                                 <NavLink className="nav-link text-dark" to="/HouseTypes">House Types</NavLink>
-                        
                             </li>
                         </ul>
 
