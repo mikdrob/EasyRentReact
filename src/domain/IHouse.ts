@@ -9,5 +9,6 @@ export interface IHouse {
     tenantsCount: number,
     erUserId: string,
     propertyTypeId: string,
-    propertyPictures: IHousePicture[]
+    propertyPictures: IHousePicture[],
+    createAt: Date
 }
